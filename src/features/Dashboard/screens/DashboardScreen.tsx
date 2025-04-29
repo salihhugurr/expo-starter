@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { View, Text, TouchableOpacity } from 'react-native';
 import { StyleSheet, UnistylesRuntime } from 'react-native-unistyles';
 

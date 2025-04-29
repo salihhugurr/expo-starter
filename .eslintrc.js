@@ -26,7 +26,7 @@ module.exports = {
     'import/resolver': {
       typescript: {
         alwaysTryTypes: true,
-        project: './tsconfig.json', // 👈 correct
+        project: './tsconfig.json',
       },
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -40,18 +40,22 @@ module.exports = {
         pattern: 'src/features/*/**/*',
       },
       {
+        mode: 'full',
         type: 'shared',
         pattern: 'src/shared/*/**/*',
       },
       {
+        mode: 'full',
         type: 'providers',
         pattern: 'src/providers/*/**/*',
       },
       {
+        mode: 'full',
         type: 'config',
         pattern: 'src/config/*/**/*',
       },
       {
+        mode: 'full',
         type: 'navigation',
         pattern: 'src/navigation/*/**/*',
       },
@@ -84,9 +88,6 @@ module.exports = {
     'import/export': 'error',
     'import/order': [
       'error',
-      {
-        'newlines-between': 'ignore', // 👈 this disables the empty line rule
-      },
       {
         groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
         pathGroups: [
@@ -174,13 +175,5 @@ module.exports = {
       },
     ],
   },
-  overrides: [
-    {
-      files: ['src/navigation/**/*.{js,jsx,ts,tsx}'],
-      rules: {
-        'boundaries/element-types': 'off',
-        'no-restricted-imports': 'off',
-      },
-    },
-  ],
+  overrides: [],
 };
