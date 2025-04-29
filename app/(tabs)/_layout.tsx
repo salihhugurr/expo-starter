@@ -1,8 +1,8 @@
 import React from 'react';
-import { Tabs } from 'expo-router';
-import { withUnistyles } from 'react-native-unistyles';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { Tabs } from 'expo-router';
+import { withUnistyles } from 'react-native-unistyles';
 
 const UniTabs = withUnistyles(Tabs, (theme) => ({
   screenOptions: {
