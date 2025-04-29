@@ -1,45 +1,57 @@
-import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
+import { Tabs } from 'expo-router';
+import { withUnistyles } from 'react-native-unistyles';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+const UniTabs = withUnistyles(Tabs, (theme) => ({
+  screenOptions: {
+    headerStyle: {
+      backgroundColor: theme.colors.background,
+      borderBottomWidth: 0.5,
+      borderBottomColor: 'gray',
+    },
+    headerTitleStyle: {
+      color: theme.colors.onBackground,
+      fontSize: theme.spacing.md,
+    },
+    tabBarStyle: {
+      backgroundColor: theme.colors.background,
+      borderTopWidth: 1,
+      borderTopColor: theme.colors.secondary,
+    },
+    tabBarLabelStyle: {
+      fontSize: theme.spacing.md,
+      padding: theme.spacing.sm,
+      paddingBottom: theme.spacing.xs,
+      paddingTop: theme.spacing.xs,
+    },
+    tabBarActiveTintColor: theme.colors.onSecondaryContainer,
+    tabBarInactiveTintColor: 'gray',
+  },
+}));
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function RootLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+    <UniTabs>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Dashboard',
+          tabBarLabel: 'Dashboard',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="view-dashboard-outline" size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="profile/index"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Profile',
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({ color, size }) => <AntDesign name="user" size={size} color={color} />,
         }}
       />
-    </Tabs>
+    </UniTabs>
   );
 }
