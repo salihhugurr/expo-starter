@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { StyleSheet } from 'react-native-unistyles';
 
 const lightTheme = {
@@ -135,7 +136,6 @@ type AppThemes = {
 
 declare module 'react-native-unistyles' {
   export interface UnistylesThemes extends AppThemes {}
-
   export interface UnistylesBreakpoints extends AppBreakpoints {}
 }
 

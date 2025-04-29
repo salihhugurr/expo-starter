@@ -151,7 +151,6 @@ module.exports = {
           },
         ],
         pathGroupsExcludedImportTypes: ['react', 'react-native'],
-        'newlines-between': 'always',
         alphabetize: {
           order: 'asc',
           caseInsensitive: true,

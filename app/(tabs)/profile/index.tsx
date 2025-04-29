@@ -1,7 +1,7 @@
 import React from 'react';
 import { ProfileScreen } from '@src/features/Profile/screens/ProfileScreen';
 
-type Props = {};
+type Props = unknown;
 
 const Profile = (props: Props) => {
   return <ProfileScreen />;
